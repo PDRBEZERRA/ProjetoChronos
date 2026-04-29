@@ -13,6 +13,8 @@ public class DevCameraControl: MonoBehaviour
     public float velocidadeMovimento = 5f;
     public float velocidadeVertical = 3f;
 
+    private GameObject playerObject;
+
     void Start()
     {
         //Se o VR estiver ativo e rodando, desativa este script
@@ -21,6 +23,9 @@ public class DevCameraControl: MonoBehaviour
             this.enabled = false;
             return;
         }
+
+        //Obtem o Objeto Player
+        playerObject = transform.parent.parent.parent.gameObject;
 
         // Esconde o cursor do mouse e trava ele no centro da tela
         Cursor.lockState = CursorLockMode.Locked;
@@ -36,7 +41,8 @@ public class DevCameraControl: MonoBehaviour
         rotacaoX = Mathf.Clamp(rotacaoX, -90f, 90f); // Impede de dar um "loop" vertical
 
         transform.localRotation = Quaternion.Euler(rotacaoX, 0f, 0f); // Cima/Baixo
-        transform.parent.Rotate(Vector3.up * mouseX); // Esquerda/Direita (Gira o corpo)
+
+        playerObject.transform.Rotate(Vector3.up * mouseX);
 
         // --- MOVIMENTO ---
         float moverX = Input.GetAxis("Horizontal"); // A e D
@@ -46,9 +52,13 @@ public class DevCameraControl: MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) moverY = 1f; //Sobe
         if (Input.GetKey(KeyCode.LeftShift)) moverY = -1f; //Desce
 
-        Vector3 movimentoHorizontal = transform.right * moverX + transform.forward * moverZ;
+        // Movimenta o player com base na camera
+        Vector3 movimentoHorizontal = (transform.right * moverX) + (transform.forward * moverZ);
+        movimentoHorizontal.y = 0;
+
         Vector3 movimentoVertical = Vector3.up * moverY;
-        transform.parent.position += ((movimentoHorizontal * velocidadeMovimento) + (movimentoVertical * velocidadeVertical)) * Time.deltaTime;
+
+        playerObject.transform.position += ((movimentoHorizontal * velocidadeMovimento) + (movimentoVertical * velocidadeVertical)) * Time.deltaTime;
 
         // Atalho para soltar o mouse se precisar (tecla Esc)
         if (Input.GetKeyDown(KeyCode.Escape))
