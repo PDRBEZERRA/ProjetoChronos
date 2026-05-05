@@ -4425,6 +4425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LanternaChronos
   cenarioAtual: {fileID: 1853891930}
   cenarioAntigo: {fileID: 927758697}
+  acaoTrocarCenario: {fileID: -470727124506223551, guid: 78dc62f002cf41c49adef4bc15fd1d67, type: 3}
 --- !u!1001 &494995068
 PrefabInstance:
   m_ObjectHideFlags: 0

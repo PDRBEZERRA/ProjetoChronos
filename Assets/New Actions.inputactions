@@ -1,6 +1,46 @@
 {
-    "version": 0,
+    "version": 1,
     "name": "New Actions",
-    "maps": [],
+    "maps": [
+        {
+            "name": "Player",
+            "id": "5cb805aa-be75-4f59-9884-2af5dfa388fd",
+            "actions": [
+                {
+                    "name": "TrocarCenario",
+                    "type": "Button",
+                    "id": "8878d084-cf2c-42b5-af8c-544e2c21752e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cc3dc794-1fa2-4b3d-85cb-0288966b50ab",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TrocarCenario",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03ca2d27-10be-4a0b-8710-2f88a543ff91",
+                    "path": "<XRController>/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TrocarCenario",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
     "controlSchemes": []
 }
