@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using static VRDetector;
 public class DevCameraControl: MonoBehaviour
 {
 
@@ -14,15 +14,21 @@ public class DevCameraControl: MonoBehaviour
     public float velocidadeVertical = 3f;
 
     private GameObject playerObject;
+    private VRDetector vrDetector;
 
     void Start()
     {
+        Debug.Log("Game Control initialized, checking for VR Controller...");
+        Debug.Log(UnityEngine.XR.XRSettings.enabled);
         //Se o VR estiver ativo e rodando, desativa este script
-        if (UnityEngine.XR.XRSettings.enabled)
+        if (vrDetector.IsVREnabled())
         {
             this.enabled = false;
+            Debug.Log("VR controller detected, deactivating default controls.");
             return;
         }
+
+        Debug.Log("VR Controller not detected, using default mouse and keyboard control.");
 
         //Obtem o Objeto Player
         playerObject = transform.parent.parent.parent.gameObject;
