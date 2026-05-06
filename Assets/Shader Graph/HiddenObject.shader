@@ -93,7 +93,7 @@ Shader "Custom/HiddenObject"
         //ENVIAR PARA O GIT SOMENTE COM O VALOR "equal"
         Stencil{
             ref 1
-            comp always
+            comp equal
             }
 
         // ------------------------------------------------------------------
