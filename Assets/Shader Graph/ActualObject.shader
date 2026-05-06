@@ -1,4 +1,4 @@
-Shader "Custom/HiddenObject"
+Shader "Custom/ActualObject"
 {
     Properties
     {
@@ -84,7 +84,7 @@ Shader "Custom/HiddenObject"
         {
             "RenderType" = "Opaque"
             "RenderPipeline" = "UniversalPipeline"
-            "UniversalMaterialType" = "HiddenObject"
+            "UniversalMaterialType" = "ActualObject"
             "IgnoreProjector" = "True"
         }
         LOD 300
@@ -93,7 +93,7 @@ Shader "Custom/HiddenObject"
         //ENVIAR PARA O GIT SOMENTE COM O VALOR "equal"
         Stencil{
             ref 1
-            comp always
+            comp NotEqual
             }
 
         // ------------------------------------------------------------------
